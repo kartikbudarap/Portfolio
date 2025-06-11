@@ -1,13 +1,16 @@
-name: Portfolio CI
+name: Windows CI Test
 
 on: [push]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  test-on-windows:
+    runs-on: windows-latest
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Say Hello
-        run: echo "✅ Portfolio build success!"
+      - name: Say Hello from Windows
+        run: |
+          echo "Running on Windows!"
+          systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
